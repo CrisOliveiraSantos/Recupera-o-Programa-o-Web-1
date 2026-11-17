@@ -1,0 +1,279 @@
+ANOTAÇÕES 
+ Sei quase nada, mas tô anotando tudo
+não gosto de resumo, então tá TUDO aqui. até as continhas.
+
+
+OS 3 ARQUIVOS
+
+o projeto tem 3 arquivos e é MELHOR assim separado: (apareceu essa setinha aqui do lado e eu não faço a mínima ideia de como eu fiz)
+
+  index.html   a casa (o que aparece na tela e agente escreve ex:h1 tá o Oi! e o h2 ta Madamme...)
+  style.css    a pintura (deixa bonito por no centro, muda as cores eu queria neom mas não achei)
+  script.js    o motorzinho (faz as coisas rodarem "tomei 3 calmantes pra fazer e muitas lágrimas")
+
+TUDO NA MESMA PASTA!!! se espalhar quebra. eu quase fiz isso kkk
+
+No videos do Youtube ele faz junto e depois separado e por que separar? 
+porque no começo eu fiz tudo num arquivo só
+(funciona! o navegador lê igual), MAS fica uma bagunça quando eu começo a chorar de novo porque não consegui ter o mapa mental onde tava cada um.
+o projeto cresceu. e separado assim achei mais fácil de achar as coisas.
+tipo buffet: cada comida na sua travessa, se quiser trocar só
+o feijão h1 e h2 index.html, mexe só nele por farinha agente agente acha no style 
+porque o estilo que quero é engasga com essa farinha seca.
+ no prato feito (tudo junto) tem que mexer no prato inteiro Ai ligo o motor da mão e boca e chamo ele de js.
+
+
+AS 2 PONTES (o que liga o html nos outros)
+
+
+o html é a porta da entrada. ele que chama os outros 2.
+os outros 2 NÃO se conhecem sozinhos. (arroz barato h1 e h2 nem quem saber de fica perto do js que ta morto de fome e só vai aceitar se tive um complemento como um bife que tá no css e se não tiver vai ser só o seco mesmo ai o css vai la e arrasa e poem um tchamm e fica showw)
+
+PONTE 1 - pro css (dentro do <head>, lá no topo):
+
+  <link rel="stylesheet" href="style.css">
+
+  
+  "ó navegador, tem uma folha de estilo aí chamada
+  style.css, vai buscar"
+
+PONTE 2 - pro js (quase no fim do <body>):
+
+  <script src="script.js" defer></script>
+
+    "ó navegador, roda o script.js. mas com defer pra
+  ESPERAR o html carregar antes. senão o motorzinho
+  liga antes das peças tarem prontas e leva cascudo
+  (que é erro kkk)"
+
+OBS importante: sem essas 2 linhas, o css e o js viram
+"arquivo fantasma". ficam na pasta mas ninguém usa. já
+aconteceu comigo e eu fiquei "ué, por que tá feio?!"
+
+
+O QUE CADA UM FAZ (a analogia do carro q eu amei)
+
+
+  html  = a lataria, portas, bancos. o que eu VEJO e TOCO
+  css   = a tinta, o adesivo, o estofado. deixa BONITO mas
+          NÃO move nada
+  js    = o MOTOR. dá VIDA. quando aperto o botão, é ele
+          que faz acontecer
+
+sem o motor, o carro vira escultura parada. html e css
+sozinhos NÃO reagem a nada. descobri isso na marra kkk
+
+
+COMO O JS ACHA AS PEÇAS DO HTML (os ids)
+
+
+o id é o NOME de cada peça. o js usa esse nome pra achar.
+
+no html:
+  <input id="nome">      -> campo de nome
+  <input id="idade">     -> campo de idade
+  <p id="resultado">     -> onde aparece a resposta
+  <p id="erro">          -> onde aparece o erro
+
+no js:
+  document.getElementById("nome").value
+
+  leitura 5 aninhos:
+  "documento, pega a peça que se chama 'nome' e me fala
+  o que tá escrito dentro dela"
+
+  nível 5 aninhos ainda mais:
+  "mãe, pega a caixinha azul e me diz o que tem dentro"
+
+CUIDADO: id no html tem que ser IGUALZINHO no js. uma
+letra diferente e já era, o js fala "undefined" (que
+significa "não achei nada"). já aconteceu comigo rsrs
+
+e pra ESCREVER na tela, é quase igual:
+  document.getElementById("resultado").innerText = "oi"
+
+  "documento, pega a peça chamada 'resultado' e escreve
+  'oi' dentro dela". o innerText é o que aparece.
+
+==============================================
+A CONTINHA DO NASCIMENTO (passo a passo bem devagar)
+==============================================
+
+imagina que a Maria digitou:
+  nome: Maria
+  idade: 17
+
+Passo 1 - o if que confere o nome:
+
+  if (nome === "") { ... }
+  "se nome for exatamente igual a vazio"
+
+  nome vale "Maria". então:
+  "Maria" === "" ? -> FALSO (não é vazio ué)
+
+  como é falso, NÃO entra no if. e aí segue reto. certo?
+
+Passo 2 - o if que confere a idade:
+
+  if (idade === "" || idade < 0 || idade > 120) { ... }
+  "se idade for vazio OU idade menor que 0 OU idade
+   maior que 120"
+
+  idade vale "17" (texto, sempre vem como texto do input!)
+  "17" === ""    ? -> FALSO
+  "17" < 0       ? -> FALSO
+  "17" > 120     ? -> FALSO
+
+  se tá TUDO falso, não entra no if. segue reto. certo?
+
+Passo 3 - a continha do nascimento:
+
+  idade = Number(idade);            // "17" vira 17
+  let anoNascimento = anoAtual - idade;
+  // anoAtual é 2025, então: 2025 - 17
+
+  fazendo na unha (armar a conta):
+
+      2025
+    -   17
+    --------
+      2008
+
+  (empresta do 2 pra virar 15, 15 - 7 = 8. aí o 2 virou 1,
+   e 1 - 1 = 0. o 2 do 2025 fica sozinho. deu 2008)
+
+  Então ela nasceu mais ou menos em 2008
+
+Passo 4 - a maioridade (um if disfarçado):
+
+  let maioridade = idade >= 18 ? "maior de idade" : "menor de idade";
+
+  leitura 5 aninhos:
+  "se idade for maior ou igual a 18, então usa a 1ª opção,
+   senão usa a 2ª"
+
+  17 >= 18 ? -> NÃO (falso)
+  então maioridade vira "menor de idade"
+
+  esse "? :" aí é só um if curtinho. se a condição for
+  verdadeira, pega o que tá antes do ":". senão, o que
+  tá depois. pode chamar de "if de bolso" kkkk
+
+Passo 5 - a frase final (juntando tudo com +):
+
+  "Olá " + "Maria" + "! Você tem " + 17 +
+  " anos, nasceu mais ou menos em " + 2008 +
+  " e é " + "menor de idade" + "."
+
+  cada + é um "grampear" (emendar as coisas). o resultado
+  é uma frase só, emendada:
+
+  Olá Maria! Você tem 17 anos, nasceu mais ou menos em
+  2008 e é menor de idade. (e um emoji pra ficar bonito)
+
+
+FLUXO DA VIDA DA PÁGINA (passo a passo)
+
+
+1. abro o index.html no navegador (2 cliques)
+2. navegador lê a linha do <link> -> busca o style.css
+   -> PINTA TUDO (cor de fundo, letras, botão)
+3. continua lendo o html -> mostra título, caixa, botão
+4. chega na linha do <script> -> busca o script.js
+   -> carrega o motorzinho mas ele FICA DORMINDO
+   (porque as funções só rodam quando alguém chama)
+5. digito "Maria" e "17" nos campos
+6. clico em Verificar -> o onclick acorda a função
+   verificarPessoa()
+7. motorzinho pega os valores pelos ids, faz a continha
+   toda (que eu expliquei acima passo a passo)
+8. escreve nos <p id="resultado"> e <p id="erro">
+   -> RESPOSTA APARECE NA TELA
+
+
+ERROS QUE EU JÁ COMETEI (pra não repetir)
+
+
+x coloquei <script> DENTRO do arquivo .js
+  -> quebrou tudo. tag é coisa de html, no js é só código
+  puro. descobri revendo a aula no youtube
+  (tag <script> só no html, tá gravado agora)
+
+x escrevi "| |" no if
+  -> tem que ser "||" (dois canos grudados, sem espaço).
+  um cano sozinho faz OUTRA COISA na linguagem (nem vou
+  entrar nesse mérito agora, só decorar: || é OU)
+
+x escrevi "idade ++" achando que era "idade vazia"
+  -> NÃO é! o ++ soma 1 (é "mais um"). o "vazio" é "" (com
+  aspas e nada dentro). o certo é idade === ""
+  (três iguais + aspas + nada dentro + aspas)
+
+x escrevi "anoNacimento" sem o "s"
+  -> funciona (porque é só um nome inventado meu), mas
+  fica feio de ler. o certo é anoNascimento com "s"
+
+x coloquei "cidade" no lugar de "idade" numa anotação
+  -> foi só dedo escorregando mesmo kkkk
+
+x esqueci que valor de <input> SEMPRE vem como TEXTO
+  -> por isso preciso do Number(idade) pra virar número
+  de verdade. "17" (texto) + 1 = "171" (gruda, vira texto)
+  mas Number("17") + 1 = 18 (soma de verdade). aprendi
+  na dor essa
+
+
+NEON NO TEXTO (que eu queria e achava difícil)
+
+
+
+é só isso no style.css, dentro do #erro:
+
+  text-shadow: 0 0 5px #e74c3c,
+                0 0 10px #e74c3c,
+               0 0 20px #e74c3c;
+
+como funciona cada pedacinho "0 0 5px #cor":
+  primeiro 0 = não desloca pra direita
+  segundo 0  = não desloca pra baixo
+  5px        = espalha 5 pixels de borrão em volta
+  cor        = a cor do brilho
+
+a mágica é repetir 3 vezes com tamanhos diferentes
+(5px, 10px, 20px). quanto mais camadas, mais neon de
+letreiro de lanchonete fica. eu amei
+
+pode colocar no botão também (troca #erro por button,
+e a cor pra azul #3498db). fica lindo
+
+
+DICAS QUE ME SALVARAM
+
+
+- se a página tá SEM COR (feia): a linha do <link> tá
+  errada OU o style.css não tá na mesma pasta
+
+- se o botão NÃO FAZ NADA: a linha do <script> tá errada
+  OU o script.js não tá na mesma pasta
+
+- pra ver o erro: abre no navegador, aperta F12 (ou
+  botão direito -> Inspecionar). clica em "Console". se
+  aparecer texto VERMELHO, é erro. ali aparece até o
+  nome do arquivo que não achou. é o meu detetive
+
+- tag <script> só no html
+- tag <style> só no html
+- no arquivo .css é CSS puro, SEM tag nenhuma
+- no arquivo .js é JS puro, SEM tag nenhuma
+- no .html tem tag pra caramba (é o único)
+
+- nome dos arquivos TUDO minúsculo: style.css, script.js
+  se colocar Style.css quebra (no Windows às vezes passa,
+  mas no GitHub quebra e é chato descobrir depois)
+
+- nome do arquivo principal TEM que ser index.html
+  (é a "porta de entrada" que o navegador procura sozinho
+  quando abre a pasta)
+
+é isso miga. daqui a 3 meses volto pra ver se ainda lembro
+e se não lembrar, tá tudo aqui. rsrs
